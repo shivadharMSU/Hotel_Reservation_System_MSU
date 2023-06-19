@@ -7,7 +7,7 @@
         <h2>Delete Room Category</h2>
     </div>
     <br>
-    <form method="POST" action="roomTypeUpdateConfirmation.php">
+    <form method="POST" action="RoomTypeUpdateController.php">
         <div class="row justify-content-center">
             <div class="form-group col-md-4 col-md-offset-1 align-center">
                 <label for="Room Type">Room Type:</label>

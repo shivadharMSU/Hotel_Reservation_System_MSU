@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoomCategory'])) 
 <br><br>
         <div class="container">
             
-            <form method="POST" action="roomTypeUpdateConfirmation.php">
+            <form method="POST" action="RoomTypeUpdateController.php">
 
                 <div class="row justify-content-center">
                     <div class="form-group">

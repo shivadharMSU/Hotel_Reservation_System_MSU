@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoom'])) {
         <div class="container">
 
             <br>
-            <form method="POST" action="RoomDetailUpdateConfirmation.php">
+            <form method="POST" action="RoomDetailUpdateController.php">
 
 
                 <div class="row justify-content-center">

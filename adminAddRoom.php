@@ -18,7 +18,7 @@
         <br>
 
         <div class="container">
-            <form method="POST" action="RoomDetailUpdateConfirmation.php">
+            <form method="POST" action="RoomDetailUpdateController.php">
                 <div class="row justify-content-center">
                     <div class="form-group col-md-4 col-md-offset-1 align-center">
                         <label for="checkin">Room No:</label>
