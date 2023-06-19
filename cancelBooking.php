@@ -3,19 +3,19 @@
 <div class="container">
         <br>
 <div class="container container d-flex justify-content-center align-items-center container">
-            <h2>Delete Room</h2>
+            <h2>Cancel Booking</h2>
         </div>
     <br>
     <form method="POST" action="RoomDetailUpdateConfirmation.php">
     <div class="row justify-content-center">
                     <div class="form-group col-md-4 col-md-offset-1 align-center">
-            <label for="checkin">Room No:</label>
+            <label for="checkin">Book Reference Number:</label>
             <input type="text" class="form-control" name="roomNo" required>
         </div> 
     </div>
 
     <div class="container container d-flex justify-content-center align-items-center container">
-    <button type="submit" class="btn btn-primary savebtn" name="deleteRoom">Delete</button>
+    <button type="submit" class="btn btn-primary savebtn" name="deleteRoom">Cancel</button>
 </div>
          
         
