@@ -148,9 +148,57 @@ function insertRoomType($roomTypeName,$price,$amenities)
 }
 
 
+function deleteCustomerBooking($bookingRefNo)
+{
+
+    $query = "DELETE FROM `customer_bookings` WHERE bookingRefId = '$bookingRefNo'";
+    // Execute the query
+    $result = $this->db->query($query) or die(mysqli_error());
+  
+    if ($result) {
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function updateRoomBookingDetails($bookingRefNo)
+{
+
+    $query = "UPDATE `rooms` SET `room_booked`='0', `booking_ref_id` = '' WHERE `booking_ref_id`='$bookingRefNo'";
+    // Execute the query
+    $result = $this->db->query($query) or die(mysqli_error());
+  
+    if ($result) {
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getDataWithEmail($email)
+{
+
+    $query = "SELECT COUNT(*) AS count FROM `customer_bookings` WHERE email ='$email'";
+    // Execute the query
+    $result = $this->db->query($query) or die(mysqli_error());
+  
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $count = $row["count"];
+        
+        return $count;
+    }
+}
+
 }
 
 // start room 
+
+
 
 
 

@@ -1,6 +1,9 @@
 <?php include("include/header.php") ?>
 <?php
 require_once 'admin/connect.php';
+include_once 'class.dbmodel.php';
+$dbmodel = new Dbmodel();
+
 if (isset($_POST['bookroom'])) {
     $checkin = $_POST["checkin"];
     $checkout = $_POST["checkout"];
@@ -11,10 +14,12 @@ if (isset($_POST['bookroom'])) {
     $roomPrice = $_POST["roomPrice"];
     $roomAmenities = $_POST["roomAmenities"];
     $noOfRooms = $_POST["noOfRooms"];
+    $email = $_POST["email"];
     $roomPrice = $roomPrice * $noOfRooms;
 
     $checkInTimestamp = strtotime($checkin);
     $checkOutTimestamp = strtotime($checkout);
+    $offerApplied = '';
 
     // Calculate the difference in seconds
     $difference = $checkOutTimestamp - $checkInTimestamp;
@@ -22,6 +27,18 @@ if (isset($_POST['bookroom'])) {
     // Convert seconds to days
     $noOfDays = floor($difference / (60 * 60 * 24));
     $roomPrice = $roomPrice * $noOfDays;
+
+    $originalPrice = $roomPrice;
+
+    $countNoOfRecords = $dbmodel->getDataWithEmail($email);
+
+     if($countNoOfRecords >0){
+        $roomPrice = $roomPrice - 50;
+        $offerApplied = 'VALEUE OFFER';
+      }else{
+        $roomPrice = $roomPrice - 100;
+        $offerApplied = 'NEW CUSTOMER OFFER';
+     }
 
 
     ?>
@@ -36,7 +53,7 @@ if (isset($_POST['bookroom'])) {
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="checkin">Name:</label>
-                        <input type="text" class="form-control" name="fullname" required required pattern="[A-Za-z]+" title="Name should contain only alphabets" placeholder="Enter name">
+                        <input type="text" class="form-control" name="fullname" required  title="Name should contain only alphabets" placeholder="Enter name">
                     </div>
                     <div class="form-group">
                         <label for="checkin">Mobile:</label>
@@ -44,7 +61,7 @@ if (isset($_POST['bookroom'])) {
                     </div>
                     <div class="form-group">
                         <label for="checkin">Email:</label>
-                        <input type="email" class="form-control" name="email" required placeholder="Enter email">
+                        <input type="email" class="form-control" name="email" required value="<?php echo $email ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="checkin">Address:</label>
@@ -75,7 +92,14 @@ if (isset($_POST['bookroom'])) {
                         <input type="text" class="form-control" name="roomType" value="<?php echo $roomType ?>" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="checkin">Price:</label>
+                        <label for="checkin">Original Price:</label>
+                        <input type="text" class="form-control" name="originalPrice" value="<?php echo $originalPrice ?>" readonly>
+                    </div>
+                    
+                    <input type="hidden" class="form-control" name="offerApplied" value="<?php echo $offerApplied ?>"
+                                        required />
+                    <div class="form-group">
+                        <label for="checkin">Final Price:</label>
                         <input type="text" class="form-control" name="price" value="<?php echo $roomPrice ?>" readonly>
                     </div>
                     <div class="form-group">

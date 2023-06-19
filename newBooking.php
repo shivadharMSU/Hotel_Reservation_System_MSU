@@ -123,6 +123,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
                                             placeholder="Enter number" required max="<?php echo $row['noOfRooms'] ?>"
                                             title="Should not exceed no od available rooms" />
                                     </div>
+                                    <div class="form-group">
+                                        <label for="email" class="room-display">Email:</label>
+                                        <input type="email" class="form-control room-display-input" name="email"
+                                            placeholder="Enter Email" required title="Enter email" />
+                                    </div>
 
                                     <input type="hidden" class="form-control" name="checkin" value="<?php echo $checkin ?>"
                                         required />

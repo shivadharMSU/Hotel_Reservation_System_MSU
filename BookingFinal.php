@@ -13,6 +13,8 @@ if (isset($_POST['personalInfo'])) {
     $state = $_POST["state"];
     $roomType = $_POST["roomType"];
     $price = $_POST["price"];
+    $originalPrice = $_POST["originalPrice"];
+    $offerApplied = $_POST["offerApplied"];
     $checkin = $_POST["checkin"];
     $checkout = $_POST["checkout"];
     $noOfAdults = $_POST["noOfAdults"];
@@ -38,7 +40,7 @@ if (isset($_POST['personalInfo'])) {
     echo 'checking if condition';
     if ($roomqueryResult->num_rows >= $noOfRooms) {
            echo $noOfRooms;
-        $query = "INSERT INTO `customer_bookings`( `name`, `mobile`, `email`, `address`, `streetname`, `city`, `state`, `roomType`, `price`, `no_of_adults`,`no_of_children`,`no_of_rooms`, `no_of_persons`,`no_of_days`, `checkin`, `checkout`) VALUES ('$name','$mobile','$email','$address','$streetname','$city','$state','$roomType','$price','$noOfAdults','$noOfChildren','$noOfRooms','$roomCapacity','$noOfDays','$checkin','$checkout');";
+        $query = "INSERT INTO `customer_bookings`( `name`, `mobile`, `email`, `address`, `streetname`, `city`, `state`, `roomType`,`offer_applied`,`original_price`, `price`, `no_of_adults`,`no_of_children`,`no_of_rooms`, `no_of_persons`,`no_of_days`, `checkin`, `checkout`) VALUES ('$name','$mobile','$email','$address','$streetname','$city','$state','$roomType','$offerApplied','$originalPrice','$price','$noOfAdults','$noOfChildren','$noOfRooms','$roomCapacity','$noOfDays','$checkin','$checkout');";
         echo $query;
         // Execute the query
         $result = $conn->query($query) or die(mysqli_error());
