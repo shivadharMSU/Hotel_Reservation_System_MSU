@@ -8,6 +8,10 @@
             <label for="checkin">Booking Ref No:</label>
             <input type="text" class="form-control" name="BookingRef" required>
         </div> 
+        <div class="form-group col-md-4 col-md-offset-1 align-center">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" required>
+        </div> 
     </div>
 
     <div class="container container d-flex justify-content-center align-items-center container">
@@ -22,24 +26,16 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['getBookings'])) {
     $bookingRef = $_POST["BookingRef"];
+    $email = $_POST["email"];
 
+    $query = "SELECT `name`, `email`, `address`, `mobile`, `city`, `state`, `email`, `checkin`, `checkout`, `no_of_adults`, `no_of_children`, `no_of_persons`, `no_of_rooms`, `no_of_days`, (SELECT `category_name` FROM `room_category_details` WHERE `id` = `roomType`) AS `room_type`, `price` FROM customer_bookings WHERE `bookingRefId` = :bookingRef and `email` = :email";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':bookingRef', $bookingRef);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-
-    // Construct the query to check for available rooms
-    //$query = "SELECT `name`,`email`,`mobile`,`address`,`city`,`state`,`roomType`,`no_of_adults`,`no_of_children`,`no_of_rooms` from customer_bookings where bookingRefId = '$bookingRef'";
-    $query = "SELECT `name`,`email`,`address`,`mobile`,`city`,`state`,`email`,`checkin`,`checkout`,`no_of_adults`,`no_of_children`,`no_of_persons`,`no_of_rooms`,`no_of_days`, (select `category_name` from `room_category_details` where `id` =`roomType` ) AS `room_type`,`price` FROM customer_bookings WHERE `bookingRefId` = '$bookingRef';";
-    // Execute the query
-    $result = mysqli_query($conn, $query);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-
-        // Fetch the record as an associative array
-        $row = mysqli_fetch_assoc($result);
-
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
         ?>
@@ -52,27 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['getBookings'])) {
             <div class="row">
                 <div class="col-md-12 center">
                     <table class="table center table-striped">
-                        <!-- <thead>
-                    <tr>
-                       <th>Booking Ref Id</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>Address</th>
-                        <th>city</th>
-                        <th>state</th>
-                        <th>checkin</th>
-                        <th>checkout</th>
-                        <th>no_of_adults</th>
-                        <th>no_of_children</th>
-                        <th>no_of_persons</th>
-                        <th>no_of_rooms</th>
-                        <th>no_of_days</th>
-                        <th>room_type</th>
-                        <th>price</th>
-                        
-                    </tr>
-                </thead> -->
+                       
                         <tbody>
 
                             <tr>
@@ -182,6 +158,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['getBookings'])) {
         </div>
         <?php
     } else {
+        ?>
+        <div class="container container d-flex justify-content-center align-items-center container">
+                <h1>No booking details with this ref id</h1>
+            </div>
+        <?php
 
     }
 }

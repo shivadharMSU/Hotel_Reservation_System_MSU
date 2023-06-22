@@ -1,5 +1,7 @@
 <?php include("include/header.php") ?>
 <?php require_once 'admin/connect.php' ?>
+<?php include_once 'class.dbmodel.php';
+$dbmodel = new Dbmodel(); ?>
 <?php $checkin = $checkout = $noOfAdults = $noOfChildren = ""; ?>
 <div class="container container d-flex justify-content-center align-items-center container">
     <h2>Check-in at 11:00 am and check-out at 10:00 pm</h2>
@@ -51,10 +53,9 @@
         var checkinDate = document.getElementById("checkin").value;
         var checkoutInput = document.getElementById("checkout");
 
-        checkoutInput.value = ""; // Clear previous value
-        checkoutInput.setAttribute("min", checkinDate); // Set minimum value for checkout
+        checkoutInput.value = "";
+        checkoutInput.setAttribute("min", checkinDate);
 
-        // Enable the input field after setting the minimum value
         checkoutInput.removeAttribute("readonly");
     }
 </script>
@@ -69,32 +70,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
 
     $noOfPersons = $noOfAdults + $noOfChildren;
 
+    $result = $dbmodel->getAvailableRooms($checkin, $checkout, $noOfPersons);
 
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-
-    $query = "select room_type,count(*) AS noOfRooms from rooms where room_featured = '1' and room_booked = '0' and check_in_date <= '$checkin' and check_out_date >= '$checkout' and room_capacity >= '$noOfPersons' group by room_type;";
-
-
-    $result = $conn->query($query);
-
-    if ($result->num_rows > 0) {
+    if (count($result) > 0) {
 
         ?>
         <div class="container container d-flex justify-content-center align-items-center container">
             <h2>Rooms available</h2>
         </div>
         <?php
-        while ($row = $result->fetch_assoc()) {
+        foreach ($result as $row) {
             $roomType = $row['room_type'];
-            echo $roomType;
-            $queryRoomType = "SELECT id,category_name,price,aminities FROM `room_category_details` WHERE id = '$roomType' ";
-
-            $resultRoomType = mysqli_query($conn, $queryRoomType);
-            $rowRoomType = mysqli_fetch_assoc($resultRoomType);
+            $rowRoomType = $dbmodel->getRoomTypes($roomType);
             ?>
             <br><br><br>
 
@@ -165,30 +153,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
                         </div>
                     </div>
                     <br>
-                    <!-- <div class="col-md-6">
-                        <img src="images/1.jpg" alt="Hotel Room Image">
-                    </div> -->
 
-                    <!-- Image List -->
 
                     <div class="col-md-6">
                         <div class="img-room">
                             <img src="images/<?php echo $rowRoomType['id'] ?>-1.jpg" class="room-image" alt="Room image">
                         </div>
-                        <!-- <img src="images/1.jpg"> -->
-                        <!-- Show More Button -->
-                        <!-- <div class="text-center mt-2">
-                            <a href="#" data-toggle="modal" data-target="#myModal">Show More</a>
-                        </div> -->
+
 
                         <div class="text-center mt-2">
                             <a href="#" class="show-more-btn" data-toggle="modal" data-target="#myModal"
                                 data-roomid="<?php echo $rowRoomType['id']; ?>">Show More</a>
                         </div>
 
-                        <!-- open model -->
-
-                        <!-- close model -->
 
                     </div>
 

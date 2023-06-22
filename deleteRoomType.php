@@ -1,5 +1,13 @@
 <?php include("include/header.php") ?>
 <?php require_once 'admin/connect.php' ?>
+
+<?php
+
+    // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        $query = "SELECT id,category_name FROM `room_category_details`";
+
+        ?>
 <div class="container">
 
     <br>
@@ -17,11 +25,11 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
 
-                    $query = "SELECT id,category_name FROM `room_category_details`";
+                    $query = "SELECT id, category_name FROM room_category_details";
+                    $stmt = $conn->query($query);
 
-                    $result = mysqli_query($conn, $query);
-                    if ($result && mysqli_num_rows($result) > 0) {
-                        while ($row = $result->fetch_assoc()) {
+                    if ($stmt && $stmt->rowCount() > 0) {
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             ?>
                             <option value="<?php echo $row['id'] ?>"><?php echo $row['category_name'] ?></option>
 
@@ -34,11 +42,17 @@
         </div>
 
         <div class="container container d-flex justify-content-center align-items-center container">
-    <button type="submit" class="btn btn-primary savebtn" name="deleteRoomCategory">Delete</button>
-</div>
+            <button type="submit" class="btn btn-primary savebtn" name="deleteRoomCategory">Delete</button>
+        </div>
     </form>
 
 
 
 </div>
+
+
+<?php
+
+                }
+        ?>
 <?php include("include/footer.php") ?>

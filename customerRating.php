@@ -1,15 +1,22 @@
 <?php include("include/header.php") ?>
+<?php require_once 'admin/connect.php' ?>
 
 <body>
     <div class="container">
         <div class="container container d-flex justify-content-center align-items-center container">
             <h2>Rate us</h2>
-            </div>
-        <form method="POST" action="submitRating.php">
+        </div>
+        <form method="POST" action="submitRatingController.php">
             <div class="row justify-content-center">
                 <div class="form-group ol-md-4 col-md-offset-1 align-center">
                     <label for="checkin">Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="" required>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group ol-md-4 col-md-offset-1 align-center">
+                    <label for="checkin">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -27,8 +34,9 @@
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-md-4 col-md-offset-1 align-center">
-                <label for="feedback">Feedback:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="feedback" rows="3" value="Please enter your Feedback here"></textarea>
+                    <label for="feedback">Feedback:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="feedback" rows="3"
+                        value="Please enter your Feedback here"></textarea>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -37,6 +45,37 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <?php
+
+    $query = "SELECT cust_name, feedback, rating FROM customer_ratings";
+    $stmt = $conn->query($query);
+    $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    ?>
+    <div class="container container d-flex justify-content-center align-items-center container">
+        <h2>Customer Reviews</h2>
+    </div>
+    <div class="container">
+
+        <?php foreach ($records as $key => $record): ?>
+            <?php if ($key % 2 == 0): ?>
+                <div class="row">
+                <?php endif; ?>
+                <div class="col-md-6">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            <?php echo $record['feedback']; ?>
+                        </p>
+                        <footer class="blockquote-footer">
+                            <?php echo $record['cust_name']; ?>
+                        </footer>
+                    </blockquote>
+                </div>
+                <?php if ($key % 2 != 0 || $key == count($records) - 1): ?>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 
     <script src="js/addons/rating.js"></script>

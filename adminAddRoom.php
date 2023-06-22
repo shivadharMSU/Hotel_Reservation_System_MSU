@@ -5,8 +5,8 @@
     <?php
 
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        $query = "SELECT id,category_name FROM `room_category_details`";
-        $result = $conn->query($query);
+        $query = "SELECT id, category_name FROM room_category_details";
+        $stmt = $conn->query($query);
 
 
 
@@ -32,7 +32,7 @@
                         <label for="Room Type">Room Type:</label>
                         <select class="form-control" id="roomTypeId" name="roomType" required>
                             <?php
-                            while ($row = $result->fetch_assoc()) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 ?>
                                 <option value="<?php echo $row['id'] ?>"><?php echo $row['category_name'] ?></option>
 

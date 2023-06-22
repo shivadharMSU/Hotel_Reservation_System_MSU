@@ -12,15 +12,13 @@
             <label for="Room Type">Room Type:</label>
             <select class="form-control" id="roomTypeId" name="roomTypeId">
                 <?php
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
 
-                $query = "SELECT id,category_name FROM `room_category_details`"; // Replace "your_table_name" with your actual table name and "id" with the column to filter the record
-                
-                $result = mysqli_query($conn, $query);
-                if ($result && mysqli_num_rows($result) > 0) {
-                    while ($row = $result->fetch_assoc()) {
+
+                $query = "SELECT id, category_name FROM room_category_details";
+                $stmt = $conn->query($query);
+
+                if ($stmt && $stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                         <option value="<?php echo $row['id'] ?>"><?php echo $row['category_name'] ?></option>
 
@@ -40,28 +38,21 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoomCategory'])) {
     $roomTypeId = $_POST["roomTypeId"];
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $query = "SELECT id,category_name,price,aminities FROM `room_category_details` WHERE `id` = '$roomTypeId'"; // Replace "your_table_name" with your actual table name and "id" with the column to filter the record
 
 
+    $query = "SELECT id, category_name, price, aminities FROM room_category_details WHERE id = :roomTypeId";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':roomTypeId', $roomTypeId);
+    $stmt->execute();
 
-    // Execute the query
-    $result = mysqli_query($conn, $query);
-
-    // Check if the query was successful
-    if ($result && mysqli_num_rows($result) > 0) {
-        // Fetch the record as an associative array
-        $row = mysqli_fetch_assoc($result);
+    if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
         // Close the database connection
 
         ?>
-<br><br>
+        <br><br>
         <div class="container">
-            
+
             <form method="POST" action="RoomTypeUpdateController.php">
 
                 <div class="row justify-content-center">

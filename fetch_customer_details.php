@@ -1,125 +1,122 @@
 <?php require_once 'admin/connect.php' ?>
 <?php
-// Establish a database connection
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
-// Check if the room_id parameter is provided
-if (isset($_POST['berf_Id'])){
 
-// if (isset($_POST['berf_Id'])) {
-   
+
+
+if (isset($_POST['berf_Id'])) {
+
+    // if (isset($_POST['berf_Id'])) {
+
     $bookingRefNo = $_POST['berf_Id'];
-    $queryCustDetails = "SELECT `name`,`email`,`address`,`mobile`,`city`,`state`,`email`,`checkin`,`checkout`,`no_of_adults`,`no_of_children`,`no_of_persons`,`no_of_rooms`,`no_of_days`, (select `category_name` from `room_category_details` where `id` =`roomType` ) AS `room_type`,`price` FROM customer_bookings WHERE `bookingRefId` = '$bookingRefNo';";
-    // Execute the query
-    $resultCustDetails = mysqli_query($conn, $queryCustDetails);
+    $queryCustDetails = "SELECT name, email, address, mobile, city, state, email, checkin, checkout, no_of_adults, no_of_children, no_of_persons, no_of_rooms, no_of_days, (SELECT category_name FROM room_category_details WHERE id = roomType) AS room_type, price FROM customer_bookings WHERE bookingRefId = :bookingRefNo";
+    $stmtCustDetails = $conn->prepare($queryCustDetails);
+    $stmtCustDetails->bindParam(':bookingRefNo', $bookingRefNo, PDO::PARAM_STR);
+    $stmtCustDetails->execute();
 
-    if ($resultCustDetails && mysqli_num_rows($resultCustDetails) > 0) {
-
-        // Fetch the record as an associative array
-        $rowCustDetails = mysqli_fetch_assoc($resultCustDetails);
+    if ($stmtCustDetails->rowCount() > 0) {
+        $rowCustDetails = $stmtCustDetails->fetch(PDO::FETCH_ASSOC);
     }
 
     ?>
-        <div class="row">
-            <div class="col">
-                <p><strong>Name: </strong>
+    <div class="row">
+        <div class="col">
+            <p><strong>Name: </strong>
                 <?php echo $rowCustDetails['name']; ?>
-                </p>
+            </p>
 
-            </div>
-            <div class="col">
-                <p><strong>Email: </strong>
+        </div>
+        <div class="col">
+            <p><strong>Email: </strong>
                 <?php echo $rowCustDetails['email']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>Mobile: </strong>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>Mobile: </strong>
                 <?php echo $rowCustDetails['mobile']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>Address: </strong>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>Address: </strong>
                 <?php echo $rowCustDetails['address']; ?>
-                </p>
-            </div>
-
+            </p>
         </div>
-        <div class="row">
-            <div class="col">
-                <p><strong>City: </strong>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><strong>City: </strong>
                 <?php echo $rowCustDetails['city']; ?>
-                </p>
+            </p>
 
-            </div>
-            <div class="col">
-                <p><strong>State: </strong>
+        </div>
+        <div class="col">
+            <p><strong>State: </strong>
                 <?php echo $rowCustDetails['state']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>Email: </strong>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>Email: </strong>
                 <?php echo $rowCustDetails['email']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>Check-in: </strong>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>Check-in: </strong>
                 <?php echo $rowCustDetails['checkin']; ?>
-                </p>
-            </div>
-
+            </p>
         </div>
-        <div class="row">
-            <div class="col">
-                <p><strong>Check-out: </strong>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><strong>Check-out: </strong>
                 <?php echo $rowCustDetails['checkout']; ?>
-                </p>
+            </p>
 
-            </div>
-            <div class="col">
-                <p><strong>No of adults: </strong>
+        </div>
+        <div class="col">
+            <p><strong>No of adults: </strong>
                 <?php echo $rowCustDetails['no_of_adults']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>No of children: </strong>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>No of children: </strong>
                 <?php echo $rowCustDetails['no_of_children']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>No of persons: </strong>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>No of persons: </strong>
                 <?php echo $rowCustDetails['no_of_persons']; ?>
-                </p>
-            </div>
-
+            </p>
         </div>
-        <div class="row">
-            <div class="col">
-                <p><strong>No of rooms: </strong>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><strong>No of rooms: </strong>
                 <?php echo $rowCustDetails['no_of_rooms']; ?>
-                </p>
-
-            </div>
-            <div class="col">
-                <p><strong>No of days: </strong>
-                <?php echo $rowCustDetails['no_of_days']; ?>
-                </p>
-            </div>
-            <div class="col">
-                <p><strong>Room type: </strong>
-                <?php echo $rowCustDetails['room_type']; ?>
-                </p>
-            </div>
-            <div class="col">
-                
-            </div>
+            </p>
 
         </div>
+        <div class="col">
+            <p><strong>No of days: </strong>
+                <?php echo $rowCustDetails['no_of_days']; ?>
+            </p>
+        </div>
+        <div class="col">
+            <p><strong>Room type: </strong>
+                <?php echo $rowCustDetails['room_type']; ?>
+            </p>
+        </div>
+        <div class="col">
+
+        </div>
+
+    </div>
     <?php
 } else {
-    echo "Invalid request. ghbjnk";
+    echo "Invalid request";
 }
 
 $conn->close();

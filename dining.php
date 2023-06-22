@@ -8,27 +8,39 @@
     <div class="row mt-4">
         <div class="col">
             <h2>About Our Dining Room</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper dui ac massa fringilla, vel ullamcorper ex feugiat. Ut sed condimentum nulla. Integer iaculis velit a dui congue tristique. Sed fringilla posuere lorem, a dignissim mi mollis at.</p>
+            <p>Whether you are beginning your day with a hearty breakfast, joining colleagues for a working lunch or entertaining over dinner, at Win Restaurant, you will enjoy a feast for your eyes as well as your taste buds. Our talented chefs have crafted menus utilizing the freshest ingredients so that every meal complements the glorious views.
+Breakfast Monday-Friday 7am-11am
+weekends 7am-11:30am
+Lunch 7 Days a week 11:30am-1:30pm</p>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col-md-6">
-            <img src="images/dine/2.jpg" class="img-fluid" alt="Dining Room Sub Image 1">
-            <p>Content for Dining Room Sub Image 1jbhendk eodshajn eudahskbj uskhdaj khasbd kajds kjsdn </p>
+            <img src="images/dine/breakfast.jpg" style="width:200%; height:200px;" class="img-fluid" alt="Dining Room Sub Image 1">
+            <p>A delightful way to start the day
+Wake up and refuel with daily breakfast at all of our hotels, featuring homemade waffles, eggs, breakfast meats, and so much more.
+Refreshments are also included in the breakfast along with Coffee and Hot chocolate
+Monday-Friday 7am-9:30am</p>
         </div>
         <div class="col-md-6">
-            <img src="images/dine/3.jpg" class="img-fluid" alt="Dining Room Sub Image 2">
-            <p>Content for Dining Room Sub Image 2 jkbds ukwd kujd kwjsd kwjsn kjsdn kjsb hsbx khsbdkshbdn xhskbdn xhsbdn xkbsdna</p>
+            <img src="images/dine/restaurant.jpg"  style="width:200%; height:200px;" class="img-fluid" alt="Dining Room Sub Image 2">
+            <p>Whether you are beginning your day with a hearty breakfast, joining colleagues for a working lunch or entertaining over dinner, at Win Restaurant, you will enjoy a feast for your eyes as well as your taste buds. Our talented chefs have crafted menus utilizing the freshest ingredients so that every meal complements the glorious views.
+Breakfast Monday-Friday 7am-11am
+weekends 7am-11:30am
+Lunch 7 Days a week 11:30am-1:30pm</p>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col-md-6">
-            <img src="images/dine/4.jpg" class="img-fluid" alt="Dining Room Sub Image 3">
-            <p>Content for Dining Room Sub Image 3hnjk hbd kjsd kjsd kjde hbd jkns hjwwjw jsuwbwnja udbdddbdbww nbhbdhs djsww</p>
+            <img src="images/dine/DINING1.jpg" style="width:200%; height:200px;" class="img-fluid" alt="Dining Room Sub Image 3">
+            <p>Aroma of freshly brewed coffee and mouthwatering pastries fills the air. JASON, a charming and passionate chef here bustles behind the counter, preparing a variety of delectable dishes.
+"Love-infused Pasta", a perfect blend of tender pasta, succulent shrimp, and a secret blend of herbs and spices. Each bite is a journey into flavor paradise. Enjoy the delicious with pleasant magic of open dining
+</p>
         </div>
         <div class="col-md-6">
-            <img src="images/dine/5.jpg" class="img-fluid" alt="Dining Room Sub Image 4">
-            <p>Content for Dining Room Sub Image 4 hybyaywwhhsyshsy hsysgydtv hbasysbs yaahsdyw bdnsybsjnsbdhbwb hbdhbs</p>
+            <img src="images/dine/dining2.jpg" style="width:200%; height:200px;" class="img-fluid" alt="Dining Room Sub Image 4">
+            <p>For classic comfort food with an imaginative twist, 20SIX is the go-to destination. Our relaxed American bistro and bar showcases innovative approaches to classic dishes using locally sourced, seasonal ingredients.
+</p>
         </div>
     </div>
 </div>

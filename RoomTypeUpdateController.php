@@ -40,6 +40,8 @@ if (isset($_POST['updateRoomCategory'])) {
     if ($result) {
         header('Location: updateRoomTypeConfirmation.php');
 
+    }else{
+        header('Location: error.php'); 
     }
 
 

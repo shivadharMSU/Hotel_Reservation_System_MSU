@@ -1,12 +1,19 @@
 <?php include("include/header.php") ?>
 <?php require_once 'admin/connect.php' ?>
 
+<?php
 
+    // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        $query = "SELECT id,category_name FROM `room_category_details`";
+
+        ?>
 <div class="container">
 
     <div class="container container d-flex justify-content-center align-items-center container">
         <h2>Rooms</h2>
     </div>
+    <br>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -24,18 +31,12 @@
         <tbody>
             <?php
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            // Execute the query
-            $query = "SELECT `room_id`, `room_number`, `room_type`, `room_featured`, `room_booked`, `check_in_date`, `check_out_date`, `room_capacity`, `booking_ref_id` FROM `rooms`";
 
-            $result = $conn->query($query);
+            $query = "SELECT room_id, room_number, room_type, room_featured, room_booked, check_in_date, check_out_date, room_capacity, booking_ref_id FROM rooms";
+            $stmt = $conn->query($query);
 
-            // Fetch and display the records
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
                     ?>
                     <tr>
@@ -48,10 +49,13 @@
                         <td>
                             <?php
                             $roomTypeId = $row['room_type'];
-                            $queryRoomTpe = "SELECT id,category_name,price,aminities FROM `room_category_details` WHERE `id` = '$roomTypeId'";
-                            $resultRoomType = mysqli_query($conn, $queryRoomTpe);
-                            if ($resultRoomType && mysqli_num_rows($resultRoomType) > 0) {
-                                $rowRoomType = mysqli_fetch_assoc($resultRoomType);
+                            $queryRoomType = "SELECT id, category_name, price, aminities FROM room_category_details WHERE id = :roomTypeId";
+                            $stmtRoomType = $conn->prepare($queryRoomType);
+                            $stmtRoomType->bindParam(':roomTypeId', $roomTypeId, PDO::PARAM_INT);
+                            $stmtRoomType->execute();
+
+                            if ($stmtRoomType->rowCount() > 0) {
+                                $rowRoomType = $stmtRoomType->fetch(PDO::FETCH_ASSOC);
                                 echo $rowRoomType['category_name'];
                             } else {
                                 echo 'N/A';
@@ -105,7 +109,6 @@
             }
 
             // Close the database connection
-            $conn->close();
             ?>
         </tbody>
     </table>
@@ -162,4 +165,8 @@
     });
 </script>
 
+<?php
+
+  }
+        ?>
 <?php include("include/footer.php") ?>

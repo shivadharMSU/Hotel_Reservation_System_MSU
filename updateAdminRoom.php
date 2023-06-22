@@ -1,6 +1,10 @@
 <?php include("include/header.php") ?>
 <?php require_once 'admin/connect.php' ?>
 <br>
+<?php
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+        $query = "SELECT id,category_name FROM `room_category_details`";
+       ?>
 <div class="container container d-flex justify-content-center align-items-center container">
     <h2>Update Room</h2>
 </div>
@@ -28,20 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoom'])) {
 
     $roomNo = $_POST["roomNo"];
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    
 
-    $query = "SELECT `room_number`, `room_type`, `room_featured`, `room_booked`, `check_in_date`, `check_out_date`, `room_capacity` FROM `rooms` WHERE `room_number` = '$roomNo'"; // Replace "your_table_name" with your actual table name and "id" with the column to filter the record
-
-
-
-    // Execute the query
-    $result = mysqli_query($conn, $query);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-        // Fetch the record as an associative array
-        $row = mysqli_fetch_assoc($result);
+    $query = "SELECT room_number, room_type, room_featured, room_booked, check_in_date, check_out_date, room_capacity FROM rooms WHERE room_number = :roomNo";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':roomNo', $roomNo, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Close the database connection
 
@@ -65,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoom'])) {
                         <label for="Room Type">Room Type:</label>
                         <select class="form-control" id="roomTypeId" name="roomType">
                             <?php
-                            $query2 = "SELECT id,category_name FROM `room_category_details`"; // Replace "your_table_name" with your actual table name and "id" with the column to filter the record
-                    
-                            $result1 = mysqli_query($conn, $query2);
-                            if ($result1 && mysqli_num_rows($result1) > 0) {
-                                while ($row2 = $result1->fetch_assoc()) {
+                          $query = "SELECT id, category_name FROM room_category_details";
+                          $stmt = $conn->query($query);
+                          
+                          if ($stmt->rowCount() > 0) {
+                              while ($row2 = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
                                     <option value="<?php echo $row2['id'] ?>" <?php if ($row && $row['room_type'] == $row2['id'])
                                            echo 'selected'; ?>><?php echo $row2['category_name'] ?></option>
@@ -174,4 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoom'])) {
     }
 }
 ?>
+<?php
+        }
+    ?>
 <?php include("include/footer.php") ?>

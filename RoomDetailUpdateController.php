@@ -63,6 +63,8 @@ if (isset($_POST['updateRoom'])) {
     if ($result) {
         header('Location: updateRoomConfirmation.php');
 
+    }else{
+        header('Location: error.php'); 
     }
 
 

@@ -5,7 +5,7 @@
     <?php
 
     // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    if (true) {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         $query = "SELECT id,category_name FROM `room_category_details`";
 
         ?>
@@ -44,7 +44,7 @@
         </form>
         </div>
         <?php
-    } else {
+        } else {
        ?>
         <div class="container container d-flex justify-content-center align-items-center container">
             <h2>Please login</h2>
