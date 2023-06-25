@@ -3,18 +3,17 @@
 class dbmodel
 {
     public $db;
-    
+
     public function __construct()
     {
-        $dsn = 'mysql:host=localhost;dbname=hotel';
-        $username = 'root';
-        $password = '';
+        $dsn = 'mysql:host=localhost;dbname=shivadharDharaniPallavidatabase';
+        $username = 'shivadharDharaniPallavi';
+        $password = 'shivadharDharaniPallaviPass';
 
         try {
             $this->db = new PDO($dsn, $username, $password);
         } catch (PDOException $e) {
             $error_message = $e->getMessage();
-            //include('database_error.php');
             echo $error_message;
             exit();
         }
@@ -174,7 +173,7 @@ class dbmodel
         return $count;
     }
 
-    function getAvailableRooms($checkin,$checkout,$noOfPersons)
+    function getAvailableRooms($checkin, $checkout, $noOfPersons)
     {
         $query = "SELECT room_type, COUNT(*) AS noOfRooms FROM rooms WHERE room_featured = '1' AND room_booked = '0' AND check_in_date <= :checkin AND check_out_date >= :checkout AND room_capacity >= :noOfPersons GROUP BY room_type";
         $stmt = $this->db->prepare($query);
@@ -184,7 +183,7 @@ class dbmodel
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         return $result;
+        return $result;
     }
 
     function getRoomTypes($roomType)
@@ -194,12 +193,12 @@ class dbmodel
         $stmt->bindParam(':roomType', $roomType);
         $stmt->execute();
         $rowRoomType = $stmt->fetch(PDO::FETCH_ASSOC);
-         return $rowRoomType;
-        
+        return $rowRoomType;
+
     }
 
 
-    function saveRatings($email,$name,$rating,$feedback)
+    function saveRatings($email, $name, $rating, $feedback)
     {
         $query = "INSERT INTO customer_ratings (email,cust_name, rating, feedback) VALUES (:email, :custName, :rating, :feedback)";
         $stmt = $this->db->prepare($query);
@@ -208,7 +207,7 @@ class dbmodel
         $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
         $stmt->bindParam(':feedback', $feedback, PDO::PARAM_STR);
         $result = $stmt->execute();
-          if ($result) {
+        if ($result) {
             return true;
         } else {
             return false;

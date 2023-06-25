@@ -7,7 +7,7 @@ if (isset($_POST['addRoomCategory'])) {
     $price = $_POST["price"];
     $amenities = $_POST["amenities"];
 
-    $result = $dbmodel->insertRoomType($roomTypeName,$price,$amenities);
+    $result = $dbmodel->insertRoomType($roomTypeName, $price, $amenities);
 
     if ($result) {
         header('Location: addRoomTypeConfirmation.php');
@@ -30,18 +30,18 @@ if (isset($_POST['deleteRoomCategory'])) {
 
 if (isset($_POST['updateRoomCategory'])) {
 
-   
+
     $price = $_POST["price"];
     $amenities = $_POST["amenities"];
     $roomTypeId = $_POST["roomTypeId"];
 
-    $result = $dbmodel->updateRoomType($price,$amenities,$roomTypeId);
+    $result = $dbmodel->updateRoomType($price, $amenities, $roomTypeId);
 
     if ($result) {
         header('Location: updateRoomTypeConfirmation.php');
 
-    }else{
-        header('Location: error.php'); 
+    } else {
+        header('Location: error.php');
     }
 
 

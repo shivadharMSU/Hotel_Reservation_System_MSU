@@ -3,12 +3,9 @@
 <div class="container">
 
     <?php
-
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         $query = "SELECT id, category_name FROM room_category_details";
         $stmt = $conn->query($query);
-
-
 
         ?>
         <br>
@@ -21,7 +18,7 @@
             <form method="POST" action="RoomDetailUpdateController.php">
                 <div class="row justify-content-center">
                     <div class="form-group col-md-4 col-md-offset-1 align-center">
-                        <label for="checkin">Room No:</label>
+                        <label for="roomNo">Room No:</label>
                         <input type="text" class="form-control" name="roomNo" placeholder="Enter Room Number" required
                             pattern="[0-9]*" title="Room No should contain only numbers" required>
                     </div>
@@ -60,7 +57,7 @@
 
                 <div class="row justify-content-center">
                     <div class="form-group col-md-4 col-md-offset-1 align-center">
-                        <label for="checkin">Max no of persons:</label>
+                        <label for="maxNoOfPersons">Max no of persons:</label>
                         <input type="number" class="form-control" name="noOfPersons" placeholder="Enter Max No of persons"
                             required required pattern="[0-9]" title="max room capacity">
                     </div>
@@ -91,16 +88,20 @@
                 var checkinDate = document.getElementById("checkin").value;
                 var checkoutInput = document.getElementById("checkout");
 
-                checkoutInput.value = ""; // Clear previous value
-                checkoutInput.setAttribute("min", checkinDate); // Set minimum value for checkout
+                checkoutInput.value = "";
+                checkoutInput.setAttribute("min", checkinDate); 
 
-                // Enable the input field after setting the minimum value
                 checkoutInput.removeAttribute("readonly");
             }
         </script>
         <?php
+        $conn = null;
     } else {
-        echo '<h1>please login</h1>';
+        ?>
+       <div class="container container d-flex justify-content-center align-items-center container">
+            <h2>Please LLogin!</h2>
+        </div>
+        <?php
     }
     ?>
 

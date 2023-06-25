@@ -3,9 +3,7 @@
 
 <?php
 
-    // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        $query = "SELECT id,category_name FROM `room_category_details`";
 
         ?>
 <div class="container">
@@ -21,9 +19,7 @@
                 <label for="Room Type">Room Type:</label>
                 <select class="form-control" id="roomTypeId" name="roomTypeId">
                     <?php
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
+                   
 
                     $query = "SELECT id, category_name FROM room_category_details";
                     $stmt = $conn->query($query);
@@ -40,19 +36,22 @@
                 </select>
             </div>
         </div>
-
         <div class="container container d-flex justify-content-center align-items-center container">
             <button type="submit" class="btn btn-primary savebtn" name="deleteRoomCategory">Delete</button>
         </div>
     </form>
 
 
-
 </div>
 
-
 <?php
-
+$conn = null;
+                }else{
+                    ?>
+                    <div class="container container d-flex justify-content-center align-items-center container">
+                            <h2>Please login</h2>
+                        </div>
+                        <?php
                 }
         ?>
 <?php include("include/footer.php") ?>

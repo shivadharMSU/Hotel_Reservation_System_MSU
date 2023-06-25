@@ -9,13 +9,13 @@ if (isset($_POST['rating'])) {
 
     $email = $_POST["email"];
     $name = $_POST["name"];
-    $rating = $_POST["rating"];   
+    $rating = $_POST["rating"];
     $feedback = $_POST["feedback"];
-    
-    $result = $dbmodel->saveRatings($email,$name,$rating,$feedback);
+
+    $result = $dbmodel->saveRatings($email, $name, $rating, $feedback);
 
     if ($result) {
-         header('Location: submitRatingConfirmation.php');
+        header('Location: submitRatingConfirmation.php');
     } else {
         header('Location: error.php');
     }

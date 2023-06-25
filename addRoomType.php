@@ -1,51 +1,50 @@
 <?php include("include/header.php") ?>
-<?php require_once 'admin/connect.php' ?>
 <div class="container">
 
     <?php
 
-    // if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        $query = "SELECT id,category_name FROM `room_category_details`";
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 
         ?>
-          <br>
+        <br>
         <div class="container container d-flex justify-content-center align-items-center container">
             <h2>Add Room category</h2>
         </div>
-        
+
         <br>
-        
+
         <div class="container">
-        <form method="POST" action="RoomTypeUpdateController.php">
-            <div class="row justify-content-center">
-                <div class="form-group col-md-4 col-md-offset-1 align-center">
-                    <label for="checkin">Room Category:</label>
-                    <input type="text" class="form-control" required pattern="[A-Za-z]+" name="roomTypeName" title="Room category name should contain only alphabets" required>
+            <form method="POST" action="RoomTypeUpdateController.php">
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-4 col-md-offset-1 align-center">
+                        <label for="roomCategory">Room Category:</label>
+                        <input type="text" class="form-control" required pattern="[A-Za-z\s\W]]+" name="roomTypeName"
+                            title="Room category name should contain only alphabets" required>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="form-group col-md-4 col-md-offset-1 align-center">
-                    <label for="checkin">Price:</label>
-                    <input type="text" class="form-control" name="price" required pattern="[0-9]*" title="Price should contain only digits" required>
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-4 col-md-offset-1 align-center">
+                        <label for="price">Price:</label>
+                        <input type="text" class="form-control" name="price" required pattern="[0-9]*" min="100"
+                            title="Price should contain only digits" required>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="form-group col-md-4 col-md-offset-1 align-center">
-                    <label for="checkin">Amenities:</label>
-                    <input type="text" class="form-control" name="amenities" required>
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-4 col-md-offset-1 align-center">
+                        <label for="amenities">Amenities:</label>
+                        <input type="text" class="form-control" name="amenities" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="container container d-flex justify-content-center align-items-center container">
-                <button type="submit" class="btn btn-primary savebtn" name="addRoomCategory">Save</button>
-            </div>
+                <div class="container container d-flex justify-content-center align-items-center container">
+                    <button type="submit" class="btn btn-primary savebtn" name="addRoomCategory">Save</button>
+                </div>
 
-        </form>
+            </form>
         </div>
         <?php
-        } else {
-       ?>
+    } else {
+        ?>
         <div class="container container d-flex justify-content-center align-items-center container">
             <h2>Please login</h2>
         </div>

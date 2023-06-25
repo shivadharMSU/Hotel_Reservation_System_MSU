@@ -1,4 +1,3 @@
-<!-- logout.php (Logout Process) -->
 
 <?php
 // Start the session

@@ -4,7 +4,7 @@
 $dbmodel = new Dbmodel(); ?>
 <?php $checkin = $checkout = $noOfAdults = $noOfChildren = ""; ?>
 <div class="container container d-flex justify-content-center align-items-center container">
-    <h2>Check-in at 11:00 am and check-out at 10:00 pm</h2>
+    <h2 class="address-color">Check-in at 11:00 am and check-out at 10:00 pm</h2>
 </div>
 <div class="container d-flex justify-content-center align-items-center container">
 
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="room-display">Email:</label>
-                                        <input type="email" class="form-control room-display-input" name="email"
+                                        <input type="email" class="form-control room-display-input-email" name="email"
                                             placeholder="Enter Email" required title="Enter email" />
                                     </div>
 
@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
 
         ?>
         <div class="modal fade" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
 
                     <!-- Modal Header -->
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary savebtn" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
@@ -232,12 +232,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
                     for (var i = 0; i < images.length; i++) {
                         var imgSrc = 'images/' + images[i];
                         var imgElement = $('<img>').attr('src', imgSrc).addClass('zoom').attr('alt', 'Room image').css({
-                            width: '200px',
-                            height: '80px'
+                            width: '280px',
+                            height: '100px'
                         });
                         var imgElement = $('<img>').attr('src', imgSrc).addClass('zoom').attr('alt', 'Room image').css({
-                            width: '200px',
-                            height: '80px'
+                            width: '280px',
+                            height: '100px'
                         });
 
                         $('#modalImages').append(imgElement);
@@ -247,7 +247,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
         </script>
         <?php
     } else {
-        echo "<p>No rooms available</p>";
+        ?>
+<div class="container container d-flex justify-content-center align-items-center container">
+    <h2>Sorry , No rooms available</h2>
+</div>
+
+        <?php
     }
 
 

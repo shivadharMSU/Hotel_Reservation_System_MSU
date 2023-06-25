@@ -10,10 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
 
 
@@ -36,7 +34,7 @@
 
 <body>
     <div class="head">
-        <center><img src="images/header-logo-shiva.jpg" style="width: 400px; height: 100px; padding: 5px;"></center>
+        <center><img src="images/hotel-logo.jpg" style="width: 400px; height: 100px; padding: 5px;"></center>
     </div>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
@@ -71,12 +69,11 @@
                             <a class="dropdown-item" href="addRoomType.php">Add Room Category</a>
                             <a class="dropdown-item" href="updateRoomType.php">Update Room Category</a>
                             <a class="dropdown-item" href="deleteRoomType.php">Delete Room Category</a>
-                            <a class="dropdown-item" href="displayRooms.php">View Rooms</a>
                         </div>
                     </li>
-                    
+
                     <li class="nav-item">
-                        <a class="nav-link" href="displayRooms.php">View Rooms</a>
+                        <a class="nav-link" href="viewRooms.php">View Rooms</a>
                     </li>
                     <!-- Admin customer -->
                 <?php else: ?>
@@ -89,16 +86,21 @@
                         <div class="dropdown-menu" aria-labelledby="bookingDropdown">
                             <a class="dropdown-item" href="newBooking.php">New Booking</a>
                             <a class="dropdown-item" href="viewBooking.php">View Booking</a>
+                            <a class="dropdown-item" href="cancelBooking.php">Cancel Booking</a>
+
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="customerRating.php">Rating</a>
+                        <a class="nav-link" href="customerRating.php">Reviews</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="dining.php">Dining</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dining.php">Salon and Spa</a>
+                        <a class="nav-link" href="salonAndSpa.php">Salon and Spa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="localAttaction.php">Local Attractions</a>
                     </li>
                 <?php endif; ?>
                 <!-- inside customer -->

@@ -4,7 +4,6 @@ require_once 'admin/connect.php';
 
 if (isset($_POST['personalInfo'])) {
     $name = $_POST["fullname"];
-    echo @$name;
     $mobile = $_POST["mobile"];
     $email = $_POST["email"];
     $address = $_POST["address"];
@@ -24,8 +23,6 @@ if (isset($_POST['personalInfo'])) {
     $noOfDays = $_POST["noOfDays"];
 
     try {
-        // $dbh = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-        // $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $roomquery = "SELECT room_number, room_type FROM rooms WHERE room_type = :roomType AND room_featured = '1' AND room_booked = '0' AND check_in_date <= :checkin AND check_out_date >= :checkout AND room_capacity >= :roomCapacity LIMIT :noOfRooms";
         $stmt = $conn->prepare($roomquery);
@@ -37,7 +34,7 @@ if (isset($_POST['personalInfo'])) {
         $stmt->execute();
         $roomqueryResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        
+
         if (count($roomqueryResult) >= $noOfRooms) {
             $query = "INSERT INTO `customer_bookings` (`name`, `mobile`, `email`, `address`, `streetname`, `city`, `state`, `roomType`, `offer_applied`, `original_price`, `price`, `no_of_adults`, `no_of_children`, `no_of_rooms`, `no_of_persons`, `no_of_days`, `checkin`, `checkout`) VALUES (:name, :mobile, :email, :address, :streetname, :city, :state, :roomType, :offerApplied, :originalPrice, :price, :noOfAdults, :noOfChildren, :noOfRooms, :roomCapacity, :noOfDays, :checkin, :checkout)";
             $stmt = $conn->prepare($query);
@@ -77,20 +74,24 @@ if (isset($_POST['personalInfo'])) {
                     $stmt->bindParam(':refid', $refid);
                     $stmt->bindParam(':roomNo', $roomNo);
                     $stmt->execute();
-                    if ($stmt->rowCount() > 0) {
-                        ?>
-                        <h2>Thanks for booking with us <?php echo $refid; ?></h2>
-                        <?php
-                    }   
+                    
                 }
+
+                ?>
+                <div class="container container d-flex justify-content-center align-items-center container">
+                <h2>Thanks you, for booking with us <?php echo $refid; ?></h2>
+            </div>
+                <?php
             }
         } else {
             ?>
-            <h2>Oops! Rooms no longer available, Please try booking again </h2>
-            <?php
+            <div class="container container d-flex justify-content-center align-items-center container">
+                <h2>Oops! Rooms no longer available, Please try booking again</h2>
+            </div>
+<?php
         }
 
-        $conn = null; // Close the connection
+        $conn = null;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

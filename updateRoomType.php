@@ -13,7 +13,6 @@
             <select class="form-control" id="roomTypeId" name="roomTypeId">
                 <?php
 
-
                 $query = "SELECT id, category_name FROM room_category_details";
                 $stmt = $conn->query($query);
 
@@ -39,15 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoomCategory'])) 
     $roomTypeId = $_POST["roomTypeId"];
 
 
-
     $query = "SELECT id, category_name, price, aminities FROM room_category_details WHERE id = :roomTypeId";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':roomTypeId', $roomTypeId);
     $stmt->execute();
 
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-        // Close the database connection
 
         ?>
         <br><br>
@@ -57,19 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoomCategory'])) 
 
                 <div class="row justify-content-center">
                     <div class="form-group">
-                        <label for="checkin">Room type id:</label>
+                        <label for="roomTypeId">Room type id:</label>
                         <input type="hidden" class="form-control" name="roomTypeId" value="<?php echo $row['id'] ?>" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group">
-                        <label for="checkin">Price:</label>
+                        <label for="price">Price:</label>
                         <input type="text" class="form-control" name="price" value="<?php echo $row['price'] ?>" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group">
-                        <label for="checkin">Aminities:</label>
+                        <label for="aminities">Aminities:</label>
                         <input type="text" class="form-control" name="amenities" value="<?php echo $row['aminities'] ?>"
                             required>
                     </div>
@@ -83,9 +79,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoomCategory'])) 
         </div>
         <?php
     } else {
-        // No record found
-        echo "No record found.";
+        ?>
+
+        <div class="container container d-flex justify-content-center align-items-center container">
+            <h2>No records found</h2>
+        </div>
+        <?php
     }
+}else{
+    header('Location: loginError.php');
+
 }
 ?>
 <?php include("include/footer.php") ?>

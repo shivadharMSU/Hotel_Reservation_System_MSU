@@ -9,14 +9,14 @@
         <form method="POST" action="submitRatingController.php">
             <div class="row justify-content-center">
                 <div class="form-group ol-md-4 col-md-offset-1 align-center">
-                    <label for="checkin">Email</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group ol-md-4 col-md-offset-1 align-center">
-                    <label for="checkin">Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" pattern="[A-Za-z\s\W]+" title="Name should contain only alphabets" placeholder="Enter Name" required>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -53,6 +53,7 @@
     $stmt = $conn->query($query);
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
+    <br>
     <div class="container container d-flex justify-content-center align-items-center container">
         <h2>Customer Reviews</h2>
     </div>
@@ -62,8 +63,8 @@
             <?php if ($key % 2 == 0): ?>
                 <div class="row">
                 <?php endif; ?>
-                <div class="col-md-6">
-                    <blockquote class="blockquote">
+                <div class="col-md-6 ">
+                    <blockquote class="blockquote reviews">
                         <p class="mb-0">
                             <?php echo $record['feedback']; ?>
                         </p>

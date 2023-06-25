@@ -38,10 +38,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                         ?>
                         <tr>
                             <td>
-                                <?php echo $row['room_id']; ?>
+                                <?php echo $row['room_id'] ?>
                             </td>
                             <td>
-                                <?php echo $row['room_number']; ?>
+                                <?php echo $row['room_number'] ?>
                             </td>
                             <td>
                                 <?php
@@ -75,20 +75,20 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                             </td>
 
                             <td>
-                                <?php echo $row['check_in_date']; ?>
+                                <?php echo $row['check_in_date'] ?>
                             </td>
                             <td>
-                                <?php echo $row['check_out_date']; ?>
+                                <?php echo $row['check_out_date'] ?>
                             </td>
                             <td>
-                                <?php echo $row['room_capacity']; ?>
+                                <?php echo $row['room_capacity'] ?>
                             </td>
                             <td>
                                 <a href="#" class="customer-ref" data-berfid="<?php echo $row['booking_ref_id']; ?>">
                                     <?php echo $row['booking_ref_id']; ?>
                                 </a>
 
-                            </td>;
+                            </td>
 
                         </tr>
                         <?php

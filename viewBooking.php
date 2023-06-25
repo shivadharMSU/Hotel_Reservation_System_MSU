@@ -2,23 +2,23 @@
 <?php require_once 'admin/connect.php' ?>
 <br>
 <div class="container">
-<form method="POST" action="">
-    <div class="row justify-content-center">
-                    <div class="form-group col-md-4 col-md-offset-1 align-center">
-            <label for="checkin">Booking Ref No:</label>
-            <input type="text" class="form-control" name="BookingRef" required>
-        </div> 
-        <div class="form-group col-md-4 col-md-offset-1 align-center">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email" required>
-        </div> 
-    </div>
+    <form method="POST" action="">
+        <div class="row justify-content-center">
+            <div class="form-group col-md-4 col-md-offset-1 align-center">
+                <label for="bopkingrefno">Booking Ref No:</label>
+                <input type="text" class="form-control" name="BookingRef" required>
+            </div>
+            <div class="form-group col-md-4 col-md-offset-1 align-center">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+        </div>
 
-    <div class="container container d-flex justify-content-center align-items-center container">
-    <button type="submit" class="btn btn-primary savebtn" name="getBookings">Submit</button>
-</div>
-         
-        
+        <div class="container container d-flex justify-content-center align-items-center container">
+            <button type="submit" class="btn btn-primary savebtn" name="getBookings">Submit</button>
+        </div>
+
+
     </form>
 
 </div>
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['getBookings'])) {
             <div class="row">
                 <div class="col-md-12 center">
                     <table class="table center table-striped">
-                       
+
                         <tbody>
 
                             <tr>
@@ -157,11 +157,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['getBookings'])) {
             </div>
         </div>
         <?php
+        $conn = null;
     } else {
         ?>
+        <br>
+        <br>
         <div class="container container d-flex justify-content-center align-items-center container">
-                <h1>No booking details with this ref id</h1>
-            </div>
+            <h1>No booking details with this ref id</h1>
+        </div>
         <?php
 
     }

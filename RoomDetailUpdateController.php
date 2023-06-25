@@ -1,5 +1,4 @@
 <?php
-require_once 'admin/connect.php';
 include_once 'class.dbmodel.php';
 $dbmodel = new Dbmodel();
 if (isset($_POST['addRoom'])) {
@@ -26,7 +25,7 @@ if (isset($_POST['addRoom'])) {
 
     if ($result) {
         header('Location: addRoomConfirmation.php');
-}
+    }
 
 }
 
@@ -35,9 +34,6 @@ if (isset($_POST['deleteRoom'])) {
 
     $roomNo = $_POST["roomNo"];
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
     $deletesuccess = $dbmodel->delete($roomNo);
     if ($deletesuccess) {
         header('Location: deleteRoomConfirmation.php');
@@ -63,8 +59,8 @@ if (isset($_POST['updateRoom'])) {
     if ($result) {
         header('Location: updateRoomConfirmation.php');
 
-    }else{
-        header('Location: error.php'); 
+    } else {
+        header('Location: error.php');
     }
 
 

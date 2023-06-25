@@ -30,12 +30,8 @@
             </thead>
             <tbody>
                 <?php
-                // Establish a database connection
-                
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-                // Fetch customer booking details query
+
+
                 $query = "SELECT `id`, `name`, `mobile`, `email`, `address`, `streetname`, `city`, `state`, `roomType`, `price`, `checkin`, `checkout`, `no_of_adults`, `no_of_children`, `no_of_rooms`, `no_of_persons`, `no_of_days`, `bookingRefId` FROM `customer_bookings`";
                 $result = $conn->query($query);
 
@@ -62,21 +58,18 @@
                         echo "<td>" . $row["no_of_days"] . "</td>";
                         echo "<td>" . $row["bookingRefId"] . "</td>";
                         echo "<td>" . $row["roomType"] . "</td>";
-                        // echo "<td><a href='#' class='room-link' data-roomid='" . $row["id"] . "'>" . $row["no_of_rooms"] . "</a></td>";
-                        // echo "<td><button class='btn btn-primary view-room' data-roomid='" . $row["id"] . "'>View Room Details</button></td>";
+
                         echo "</tr>";
                     }
                 } else {
                     echo "<tr><td colspan='7'>No bookings found.</td></tr>";
                 }
-                $conn->close();
                 ?>
             </tbody>
         </table>
     </div>
 </div>
 
-<!-- Room Details Modal -->
 <div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -129,6 +122,5 @@
         }
     });
 </script>
-
 
 <?php include("include/footer.php") ?>
