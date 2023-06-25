@@ -86,9 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fetchRoomCategory'])) 
         </div>
         <?php
     }
-}else{
-    header('Location: loginError.php');
-
 }
 ?>
 <?php include("include/footer.php") ?>

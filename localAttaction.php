@@ -7,8 +7,8 @@
             <div class="col-md-12">
                 <img src="images/localattr/brrok.jpg" class="img-fluid" style="width:100%; height:350px;" alt="Image 1">
                 <div class="image-content">
-                    <h3>Discover the Beauty of Jersey City</h3>
-                    <p>Attractions and site views in Jersey City provide visitors with a rich cultural experience and stunning views of the city's skyline and natural beauty..</p>
+                    <h3>About Local Attractions</h3>
+                    <p>Attractions and site views near Jersey City provide visitors with a rich cultural experience and stunning views of the city's skyline and natural beauty..</p>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
         <br>
         <div class="row">
             <div class="col-md-6">
-                <h3></h3>Time sqare 
+                <h3>Brooklyn Bridge</h3>
                 <p>This hotel is near Brooklyn Bridge, so you literally just need to take a few steps if you want to get closer views of this famous landmark in New York City.The bridge itself is a suspension bridge, and at the time of opening was the longest suspension bridge in the world. With its suspension cables & famed columns, the Brooklyn Bridge is the perfect backdrop to any photo. When it comes to the best Brooklyn Bridge view spots, there are a lot of options to choose from.</p>
             </div>
             <div class="col-md-6">
@@ -36,7 +36,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <img src="images/localattr/liberty.jpg" style="width:200%; height:400px;" class="img-fluid" alt="Image 2">
+                <img src="images/localattr/timesqare.jpg" style="width:200%; height:400px;" class="img-fluid" alt="Image 2">
             </div>
             <div class="col-md-6">
                 <h3>Times Square</h3>

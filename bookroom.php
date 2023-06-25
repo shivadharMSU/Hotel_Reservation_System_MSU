@@ -33,11 +33,11 @@ if (isset($_POST['bookroom'])) {
     $countNoOfRecords = $dbmodel->getDataWithEmail($email);
     $discount = 0;
     if ($countNoOfRecords > 0) {
-        $discount = 50;
+        $discount = 30;
         $roomPrice = $roomPrice - 30;
         $offerApplied = 'VALUE CUSTOMER OFFER';
     } else {
-        $discount = 100;
+        $discount = 50;
         $roomPrice = $roomPrice - 50;
         $offerApplied = 'NEW CUSTOMER OFFER';
     }

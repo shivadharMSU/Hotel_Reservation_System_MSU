@@ -79,7 +79,7 @@ if (isset($_POST['personalInfo'])) {
 
                 ?>
                 <div class="container container d-flex justify-content-center align-items-center container">
-                <h2>Thanks you, for booking with us <?php echo $refid; ?></h2>
+                <h2>Thanks you for booking with us <?php echo $refid; ?></h2>
             </div>
                 <?php
             }
