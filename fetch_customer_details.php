@@ -1,9 +1,7 @@
 <?php require_once 'admin/connect.php' ?>
 <?php
 
-
 if (isset($_POST['berf_Id'])) {
-
 
     $bookingRefNo = $_POST['berf_Id'];
     $queryCustDetails = "SELECT name, email, address, mobile, city, state, email, checkin, checkout, no_of_adults, no_of_children, no_of_persons, no_of_rooms, no_of_days, (SELECT category_name FROM room_category_details WHERE id = roomType) AS room_type, price FROM customer_bookings WHERE bookingRefId = :bookingRefNo";

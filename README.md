@@ -1,2 +1,2 @@
-# Hotel_Reservation_System_MSU
-Hotel reservation system, web development project
+
+We have started a new hotel named “ShivadharPallaviDharani stay inn hotel” nearby Newyork, United states of America. We have developed a website for our hotel where customers can view the different rooms available for the stay based on the number of people and facilities they required.

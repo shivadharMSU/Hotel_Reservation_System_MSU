@@ -218,10 +218,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['searchroom'])) {
                 $('.show-more-btn').click(function () {
                     var roomId = $(this).data('roomid');
 
-                    // Clear previous images
                     $('#modalImages').empty();
 
-                    // Add new images dynamically
                     var images = [
                         roomId + '-2.jpg',
                         roomId + '-3.jpg',

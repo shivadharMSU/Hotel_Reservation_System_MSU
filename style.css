@@ -61,15 +61,7 @@
 	font-family: montserrat;
 	padding-bottom: 60px; 
   }
-  /* nav{
-	background: rgb(179, 37, 37);
-	height: 80px;
-	width: 100%;
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-	z-index: 100;
-  } */
+  
   label.logo{
 	color: rgb(46, 150, 36);
 	font-size: 35px;
@@ -83,25 +75,7 @@
 	margin-top: 20px;
 	padding: 20px;
 }
-  /* nav ul{
-	float: left;
-	margin-right: 20px;
-  }
-  nav ul li{
-	display: inline-block;
-	line-height: 80px;
-	margin: 0 5px;
-  }
- 
-  nav ul li a{
-	
-	color: rgb(207, 45, 45);
-	font-size: 17px;
-	padding: 7px 13px;
-	border-radius: 3px;
-	text-transform: uppercase;
-  } */
-
+  
   a.active,a:hover{
 	background: #a0a4a7;
 	color: rgb(196, 43, 43);
@@ -216,9 +190,6 @@
   }
   
 
-/* .accordian-section{
-   background: rgb(41, 38, 38);
-} */
 
   .checkbtn{
 	font-size: 30px;
@@ -239,10 +210,7 @@
   #check{
 	display: none;
   }
-  /* .footer{
-	bottom: 0;co
-	background-color:rgba(0, 0, 0, 0.7);
-  } */
+  
 
   .footer {
 	padding: 1px 1px;
@@ -258,45 +226,6 @@
   }
   
 
-  /* .form-inline {  
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-  }
-  
-  .form-inline label {
-	margin: 5px 10px 5px 0;
-  }
-  
-  .form-inline input {
-	vertical-align: middle;
-	margin: 5px 10px 5px 0;
-	padding: 10px;
-	background-color: #fff;
-	border: 1px solid #ddd;
-  }
-  
-  .form-inline button {
-	padding: 10px 20px;
-	background-color: dodgerblue;
-	border: 1px solid #ddd;
-	color: white;
-	cursor: pointer;
-  }
-  
-  .form-inline button:hover {
-	background-color: black;
-  }
-  .room-details {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 20px;
-  }
-  .room-details img {
-	max-width: 400px;
-	height: auto;
-  } */
   
   
   
@@ -325,7 +254,7 @@ img.room-image {
   .hotel-head{
 	font-family: Georgia, serif;
 	font-size: 30px;  
-	color: rgb(4, 4, 88);
+	color: rgb(16, 192, 127);
   }
 
   .address-color{
@@ -496,51 +425,9 @@ table.center {
   
   .rating:hover > input:checked ~ label:before{ opacity: 0.4; }
   
-  /* .accordion {
-	background-color: #eee;
-	color: #444;
-	cursor: pointer;
-	padding: 18px;
-	width: 100%;
-	border: none;
-	text-align: left;
-	outline: none;
-	font-size: 15px;
-	transition: 0.4s;
-  }
-  
-  .active, .accordion:hover {
-	background-color: #ccc;
-  }
-  
-  .accordion:after {
-	content: '\002B';
-	color: #777;
-	font-weight: bold;
-	float: right;
-	margin-left: 5px;
-  }
-  
-  .active:after {
-	content: "\2212";
-  }
-  
-  .panel {
-	padding: 0 18px;
-	background-color: white;
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.2s ease-out;
-  }
-   */
-  /* @media only screen and (max-width: 600px) {
-	h1{font-size: 14px;}
-	p{font-size: 12px;}
-  } */
-  
-  /*  code for customer ratings*/
+   
 
-  /* @media screen and (max-width: 950px){
+  @media screen and (max-width: 950px){
 	label.logo{
 		font-size: 30px;
 		padding-left: 50px;
@@ -559,9 +446,9 @@ table.center {
 		flex-direction: column;
 		align-items: stretch;
 	  }
-  } */
+  } 
 
-  /* @media screen and (max-width: 1050px){
+  @media screen and (max-width: 1050px){
  	.checkbtn{
 		display: block;
 	}
@@ -605,4 +492,4 @@ table.center {
 	  }
   }
 
-   */
+   

@@ -22,6 +22,13 @@
         .logo {
             height: 50px;
         }
+        .navbar {
+            background-color: white !important; /* Change background color to white */
+        }
+
+        .nav-link {
+            color: black !important; /* Change text color to black */
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -33,9 +40,7 @@
 </head>
 
 <body>
-    <div class="head">
-        <center><img src="images/hotel-logo.jpg" style="width: 400px; height: 100px; padding: 5px;"></center>
-    </div>
+    
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -44,7 +49,8 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav navbar-menu mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link menulist" href="index.php">Home</a>
+                <img class="nav-link menulist" src="images/hotel-logo.jpg" style="width: 200px; height: 50px; padding: 5px;" href="index.php"">
+                    <!-- <a class="nav-link menulist" href="index.php">Home</a> -->
                 </li>
 
                 <?php if ($loggedIn): ?>
@@ -121,6 +127,7 @@
             </ul>
         </div>
     </nav>
-</body>
 
+ 
+</body>
 </html>

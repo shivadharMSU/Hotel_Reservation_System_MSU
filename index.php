@@ -31,9 +31,9 @@
 
 <br>
 
-<div class="container hotel-body" style="text-align: center; font-size: 20px;">
-	<h1 class="hotel-head">Welcome To Hotel ShivadharDharaniSriPallavi</h1>
-	<p>Welcome to Hotel ShivadharDharaniSriPallavi, your premier destination for luxurious accommodations in the heart
+<div class="container hotel-body" style="font-size: 20px;">
+	<h1 class="hotel-head">Welcome To Hotel RohithPallavi</h1>
+	<p>Welcome to Hotel RohithPallavi, your premier destination for luxurious accommodations in the heart
 		of New Jersey.
 		Situated in the vibrant city of Jersy City, our hotel offers a perfect blend of comfort, convenience, and
 		sophistication, making it an ideal choice for both leisure and business travelers.Immerse yourself in the
@@ -44,7 +44,7 @@
 		menu
 		featuring both local and international culinary delights. Whether you're in the mood for a hearty breakfast, a
 		light lunch, or a gourmet dinner, our restaurant promises to satisfy even the most discerning palate.</p>
-	<p>At Hotel ShivadharDharaniSriPallavi, we are committed to providing exceptional hospitality and creating
+	<p>At Hotel RohithPallavi, we are committed to providing exceptional hospitality and creating
 		unforgettable experiences for
 		our guests. Book your stay with us today and discover the perfect blend of luxury, convenience, and warm
 		hospitality in the heart of New Jersey.</p>
@@ -55,7 +55,7 @@
 		<div class="col-md-6">
 			<h4 class="address-color">Visit us at</h4>
 			<address>
-			Hotel ShivadharDharaniSriPallavi <br>
+			Hotel RohithPallavi <br>
 				167, columbia ave <br>
 				jersy city <br>
 				New Jersy <br>
@@ -65,8 +65,8 @@
 		<div class="col-md-6">
 			<h4 class="address-color">Contact Us</h4>
 			<address>
-			Mail : HotelShivadharDharaniSriPallavi@gmail.com <br>
-            Phone : 40862178972 <br>			
+			Mail : RohithPallavi@gmail.com <br>
+            Phone : 40862766972 <br>			
 			</address>
 		</div>
 	</div>
